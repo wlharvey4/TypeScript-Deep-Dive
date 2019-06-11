@@ -1,0 +1,148 @@
+# -*- mode:org; fill-column:79; -*-
+
+#+title:TypeScript Deep Dive
+#+author:Basarat Ali Syed
+#+date:2019-6-11 14:26
+#+macro:version Version 0.0.1
+* Introduction
+:PROPERTIES:
+:unnumbered: t
+:END:
+* Getting Started
+** Why TypeScript
+* JavaScript
+** Equality
+** References
+** Null vs Undefined
+** this
+** Closures
+** Number
+* Future JavaScript Now
+** Classes
+*** Classes Emit
+** Arrow Functions
+** Rest Parameters
+** let
+** const
+** Destructuring
+** Spread Operator
+** for ... of
+** Iterators
+** Template Strings
+** Promise
+** Generators
+** Async Await
+* Project
+** Compilation Context
+*** tsconfig.json
+*** Which Files
+** Declaration Spaces
+** Modules
+*** File Module Details
+*** globals.d.ts
+** Namespaces
+** Dynamic Import Expressions
+* Node.js QuickStart
+* Browser QuickStart
+* TS Type System
+** JS Migration Guide
+** @types
+** Ambient Declarations
+*** Declaration Files
+*** Variables
+** Interfaces
+** Enums
+** lib.d.ts
+** Functions
+** Callable
+** Type Assertion
+** Freshness
+** Type Guard
+** Literal Types
+** Readonly
+** Generics
+** Type Inference
+** Type Compatibility
+** Never Type
+** Discriminated Unions
+** Index Signatures
+** Moving Types
+** Exception Handling
+** Mixins
+* JSX
+* Options
+** noImplicitAny
+** strictNullChecks
+* Testing
+** Jest
+* TIPs
+** String-based Enums
+** Nominal Typing
+** Stateful Functions
+** Bind is Bad
+** Currying
+** Type Instantiation
+** Lazy Object Literal Initialization
+** Classes are Useful
+** Avoid Export Default
+** Limit Property Setters
+** null is Bad
+** outFile Caution
+** JQuery Tips
+** static constructors
+** singleton pattern
+** Function parameters
+** Truthy
+** Build Toggles
+** Barrel
+** Create Arrays
+** Typesafe Event Emitter
+* Style Guide
+* Common Errors
+* TypeScript Compiler Internals
+** Program
+** AST
+*** TIP---Visit Children
+*** TIP---SyntaxKind enum
+*** Trivia
+** Scanner
+** Parser
+*** Parser Functions
+** Binder
+*** Binder Functions
+*** Binder Declarations
+*** Binder Container
+*** Binder SymbolTable
+*** Binder Error Reporting
+** Checker
+*** Checker Diagnostics
+*** Checker Error Reporting
+** Emitter
+*** Emitter Functions
+*** Emitter Source Maps
+** Contributing
+
+* Macro Definitions                                                :noexport:
+#+macro:heading @@html:<h3>@@ $1 @@html:</h3>@@
+#+macro:subheading @@html:<h4>@@ $1 @@html:</h4>@@
+* Export Settings                                                  :noexport:
+#+options: html-link-use-abs-url:nil html-postamble:auto html-preamble:t
+#+options: html-scripts:t html-style:t html5-fancy:t tex:t H:6 date:nil
+#+html_doctype: html5
+#+html_container: div
+#+description:
+#+keywords:
+#+html_link_home:
+#+html_link_up:
+#+html_mathjax:
+#+html_head:
+#+html_head_extra:
+#+subtitle:Outline by Pinecone062 {{{date}}} {{{version}}}
+#+infojs_opt:
+#+creator: <a href="https://www.gnu.org/software/emacs/">Emacs</a> 26.2 (<a href="https://orgmode.org">Org</a> mode 9.2.3)
+#+latex_header:
+
+* Local Variables                                                  :noexport:
+# Local variables:
+# time-stamp-pattern:"8/^\\#\\+date:%:y-%:m-%:d %:H:%:M$"
+# End:
