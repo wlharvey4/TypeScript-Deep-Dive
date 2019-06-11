@@ -2,14 +2,140 @@
 
 #+title:TypeScript Deep Dive
 #+author:Basarat Ali Syed
-#+date:2019-6-11 14:26
-#+macro:version Version 0.0.1
+#+date:2019-6-11 15:5
+#+macro:version Version 0.0.2
 * Introduction
 :PROPERTIES:
 :unnumbered: t
+:source:   https://github.com/basarat/typescript-book
 :END:
+** Inspiration
+
 * Getting Started
 ** Why TypeScript
+There are two main goals of TypeScript:
+
+- Provide an /optional/ type system for JavaScript.
+- Provide planned features from future JavaScript editions to current
+  JavaScript engines
+*** The TypeScript type system
+"Why add types to JavaScript?"
+
+- Types have proven ability to enhance code quality and understandability.
+- Types increase your agility when doing refactoring.  It's better for the
+  compiler to catch errors than to have things fail at runtime.
+- Types are one of the best forms of documentation you can have.  The function
+  signature is a theorem and the function body is the proof.
+
+
+TypeScript is very particular about keeping the barrier to entry as low as
+possible.
+
+**** Your JavaScript is TypeScript
+- types are completely optional
+- Your JavaScript code ~.js~ file can be renamed to a ~.ts~ file and TypeScript
+  will still give you back valid ~.js~ equivalent to the original JavaScript
+  file.
+- TypeScript is intentionally and strictly a superset of JavaScript with
+  optional Type checking.
+
+**** Types can be Implicit
+- TypeScript will try to infer as much of the type information as it can in
+  order to give you type safety with minimal cost of productivity during code
+  development.
+
+#+begin_src js
+var foo = 123;
+foo = '456'; // Error: cannot assign `string` to `number`
+
+// Is foo a number or a string?
+#+end_src
+
+If you do stuff like shown in this example, then, in the rest of your code, you
+cannot be certain that foo is a number or a string.  Such issues turn up often
+in large multi-file code bases.
+
+**** Types can be Explicit
+You can use annotations to:
+
+1. Help along the compiler, and more importantly document stuff for the next
+   developer who has to read your code
+
+2. Enforce that what the compiler sees is what you thought it should see.  That
+   is,  that your understanding of the code matches an algorithmic analysis of the
+   code (done by the compiler).
+
+
+TypeScript uses postfix type annotations:
+
+#+begin_src js
+var foo: number = 123;
+#+end_src
+
+So if you do something wrong the compiler will error e.g.:
+
+#+begin_src js
+var foo: number = '123'; // Error: cannot assign a `string` to a `number`
+#+end_src
+
+**** Types are Structural
+In TypeScript because we really want it to be easy for JavaScript developers
+with a minimum cognitive overload, types are structural.  This means that /duck
+typing/ is a first class language construct.
+
+**** Type errors do not prevent JavaScript emit
+Even if there are compilation errors, by default TypeScript will emit valid
+JavaScript the best that it can.
+
+So you can incrementally upgrade your JavaScript code to TypeScript.  This is
+very different from how many other language compilers work and yet another
+reason to move to TypeScript.
+
+**** Types can be Ambient
+A major design goal of TypeScript was to make it possible for you to safely and
+easily use existing JavaScript libraries in TypeScript.  TypeScript does this by
+means of ~declaration~.
+
+Definitions for most of the popular JavaScript libraries have already been
+written for you by the [[https://github.com/borisyankov/DefinitelyTyped][DefinitelyTyped]] community so for most purposes either:
+
+1. The definition file already exists.
+2. Or at the very least, you have a vast list of well reviewed TypeScript
+   declaration templates already available.
+
+***** Authoring Your Own Declaration File
+As a quick example of how you would author your own declaration file, consider
+a trivial example of [[https://jquery.com/][jquery]].
+
+By default (as is to be expected of good JS code) TypeScript expects you to
+declare (i.e. use ~var~ somewhere) before you use a variable:
+: $('.awesome').show(); // Error: cannot find name `$`
+
+As a quick fix you can tell TypeScript that there is indeed something called
+~$~:
+
+#+begin_src js
+declare var $: any;
+$('.awesome').show(); // Okay!
+#+end_src
+
+If you want you can build on this basic definition and provide more information
+to help protect you from errors:
+
+#+begin_src js
+declare var $: {
+    (selector:string): any;
+};
+$('.awesome').show(); // Okay!
+$(123).show(); // Error: selector needs to be a string
+#+end_src
+
+*** Future JavaScript => Now
+TypeScript provides a number of features that are planned in ES6 for current
+JavaScript engines (that only support ES5 etc).  The TypeScript team is
+actively adding these features and this list is only going to get bigger over
+time and we will cover this in its own section.
+
 * JavaScript
 ** Equality
 ** References
